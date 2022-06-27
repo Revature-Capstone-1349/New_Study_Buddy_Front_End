@@ -6,7 +6,7 @@
 	>
 		<mat-card class="m-2">
 			<div class="d-flex flex-column del-flashcard-btn">
-				<button mat-mini-fab color="warn" class="align-self-end" (click)="deleteFlashcard(flashcard.fcardId)">
+				<button mat-mini-fab color="warn" class="align-self-end" (click)="deleteFlashcard(flashcard.fcardId)" [hidden]="!owner">
 					<mat-icon>delete</mat-icon>
 				</button>
 			</div>

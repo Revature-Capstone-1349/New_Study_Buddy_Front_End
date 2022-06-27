@@ -27,7 +27,6 @@ export class SetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.session.getSession("userAccount")
-    console.log(this.currentUser.userId)
     this.setsSession.setsByUserIdAndPublic(this.currentUser.userId).subscribe({
       next: (res) =>{
         this.currentSet = res

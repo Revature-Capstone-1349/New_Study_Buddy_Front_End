@@ -4,32 +4,32 @@
 	<mat-drawer-container class="mat-typography" autosize>
 		<mat-drawer #drawer mode="side" disableClose="true" opened="true">
 			<mat-nav-list>
-				<a routerLink="/flash-cards">
+				<a routerLink="/flash-cards" *ngIf="logger">
 					<mat-list-item>
 						<mat-icon mat-list-icon>crop_portrait</mat-icon>
 						<h4 mat-line *ngIf="hideDrawer">Flash Cards</h4>
 					</mat-list-item>
 				</a>
-				<a routerLink="/notes">
+				<a routerLink="/notes" *ngIf="logger">
 					<mat-list-item>
 						<mat-icon mat-list-icon>draw</mat-icon>
 						<h4 mat-line *ngIf="hideDrawer">Notes</h4>
 					</mat-list-item>
 				</a>
-				<a routerLink="/login">
+				<a routerLink="/login" *ngIf="!logger">
 					<mat-list-item>
-						<mat-icon mat-list-icon>draw</mat-icon>
+						<mat-icon mat-list-icon>login</mat-icon>
 						<h4 mat-line *ngIf="hideDrawer">Login</h4>
 					</mat-list-item>
 				</a>
-				<a routerLink="/register">
+				<a routerLink="/register" *ngIf="!logger">
 					<mat-list-item>
-						<mat-icon mat-list-icon>draw</mat-icon>
+						<mat-icon mat-list-icon>app_registration</mat-icon>
 						<h4 mat-line *ngIf="hideDrawer">Register</h4>
 					</mat-list-item>
 				</a>
 				<div class='m-3'>
-				<app-timer *ngIf="hideDrawer"></app-timer></div>
+				<app-timer *ngIf="hideDrawer &&  logger"></app-timer></div>
 			</mat-nav-list>
 		</mat-drawer>
 		<mat-drawer-content>
