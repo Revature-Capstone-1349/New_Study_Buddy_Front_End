@@ -14,6 +14,7 @@ import { AddNotesComponent } from './Components/add-notes/add-notes.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
+  { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'notes', component: ViewNotesComponent },
   { path: 'flash-cards', component: FlashCardSetComponent },

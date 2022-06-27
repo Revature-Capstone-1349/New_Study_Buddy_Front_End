@@ -1,8 +1,11 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { notes } from 'src/app/Model/notes';
 import { User } from 'src/app/Model/user';
+import { ViewFlashCardsComponent } from 'src/app/Pages/view-flash-cards/view-flash-cards.component';
+import { FlashCardService } from 'src/app/Service/flash-card.service';
 import { NotesService } from 'src/app/Service/notes.service';
 import { SessionsService } from 'src/app/Service/sessions.service';
 
@@ -14,33 +17,41 @@ import { SessionsService } from 'src/app/Service/sessions.service';
 export class AddNotesComponent implements OnInit {
 
   note = new notes()
-  user : User
+  user: User
 
   constructor(
     private session: SessionsService,
     private noteService: NotesService,
-    private snack: MatSnackBar
-    ) {
-      this.user = session.userAccount
-      console.log(this.user)
-     }
+    private snack: MatSnackBar,
+    public dialogRef: DialogRef<ViewFlashCardsComponent>,
+    public flashcardService: FlashCardService
+  ) {
+    this.user = session.getSession('userAccount')
+  }
 
   ngOnInit(): void {
     this.user = this.session.getSession("userAccount")
   }
-//Add a onclick function for creating the note
-onSubmitHandler(){
-  console.log("Form was submitted");
-  // console.log()
-  console.log(this.user.userId);
-  this.note.userId = this.user.userId
-  console.log(this.note)
-  this.noteService.addNote(this.note).subscribe(response =>{
-    console.log(response)
-    this.snack.open("Your note has been......", "Created", {
-      duration : 5000
+
+
+  onSubmitHandler() {
+    this.note.userId = this.user.userId
+    this.noteService.addNote(this.note).subscribe({
+      next: (res) => {
+        this.flashcardService.notifyAboutChange();
+      },
+      complete: () =>{
+        this.dialogRef.close();
+        this.snack.open("Your note has been......", "Created", {
+          duration: 3000
+        })
+        window.location.reload();
+      }
     })
-  })
-  
-}
+
+  }
+
+  closeDialog() {
+    this.dialogRef.close()
+  }
 }

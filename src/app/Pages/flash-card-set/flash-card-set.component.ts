@@ -53,11 +53,7 @@ export class AddSetComponentDialog implements OnInit {
   ) {
     this.user = this.session.getSession("userAccount")
     console.log("This user is " + this.user.userId)
-    // async () => {
-      // this.user = await this.session.getSession("userAccount")
-      // console.log(this.user)
       this.setItem = new Sets(this.user.userId);
-    // };
   }
 
   addSetFormHandler(): void {

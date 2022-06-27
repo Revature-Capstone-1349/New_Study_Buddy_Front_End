@@ -1,5 +1,8 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
+import { AddNotesComponent } from 'src/app/Components/add-notes/add-notes.component';
 import { notes } from 'src/app/Model/notes';
 import { User } from 'src/app/Model/user';
 import { NotesService } from 'src/app/Service/notes.service';
@@ -12,9 +15,7 @@ import { SessionsService } from 'src/app/Service/sessions.service';
 })
 export class ViewNotesComponent implements OnInit {
   userId: number = 1
-
   user: User
-
   noteList : notes[] = []
   editModeOn = false;
   editList : boolean[] = [];
@@ -22,7 +23,8 @@ export class ViewNotesComponent implements OnInit {
   constructor(
     private session: SessionsService,
     private noteService: NotesService,
-    private snack: MatSnackBar
+    private snack: MatSnackBar,
+    private dialog: Dialog
   ) { 
     this.user = this.session.getSession("userAccount")
     console.log(this.user)
@@ -40,14 +42,10 @@ export class ViewNotesComponent implements OnInit {
   }
 
   ToggleEdit(id:number){
-    // this.editModeOn = !this.editModeOn;
-    // console.log(this.editList)
     this.editList[id] = !this.editList[id]
-    // console.log("Origin list " + this.noteList[id].category)
     this.noteService.getNotesByUserId(this.user.userId).subscribe(response => {
       this.noteList  = response
     })
-    // console.log("Edit list " + this.noteEditList[id].category)  
   }
 
   ngSubmitHandler(index:any){
@@ -69,11 +67,20 @@ export class ViewNotesComponent implements OnInit {
       this.snack.open("The note has been .......", "Deleted",{
         duration: 5000
       })
+      this.noteService.notifyAboutChange();
     })
-    window.location.reload()
 
   }
 
-  
+  notifierSubScription: Subscription = this.noteService.subjectNotifer.subscribe( notified =>{
+    
+    this.noteService.getNotesByUserId(this.user.userId).subscribe(response => {
+      this.noteList  = response
+    })
+  })
+
+  openCreateNotesDialog():void{
+    this.dialog.open(AddNotesComponent,{})
+  }
 
 }

@@ -1,14 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotesService {
+  subjectNotifer: Subject<void> = new Subject<void>();
   portNumber:number = 8080;
 
   constructor(private http: HttpClient) {}
+
+  notifyAboutChange(){
+    this.subjectNotifer.next();
+  }
 
  getNotes(): Observable<any>{
     return this.http.get<any>("http://localhost:8080/api/Notes");

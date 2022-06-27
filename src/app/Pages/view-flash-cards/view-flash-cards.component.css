@@ -3,3 +3,22 @@
     right: 20px;
     bottom: 20px;
 }
+
+.start-card-btn{
+    position: fixed; 
+    margin-left:-50px;
+    left:50%;
+    width:100px;
+    bottom:30px;
+ }
+ 
+.del-flashcard-btn {
+    display: none;
+    opacity: 0;
+}
+mat-card:hover .del-flashcard-btn{
+    display: block;
+    transition: 0.4s;
+    opacity: 1;
+}
+

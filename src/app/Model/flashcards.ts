@@ -3,6 +3,6 @@ export class flashcards{
         public term?:string,
         public def?:string,
         public setId?: number,
-        public fCardId?: number
+        public fcardId?: number
     ){}
 }
