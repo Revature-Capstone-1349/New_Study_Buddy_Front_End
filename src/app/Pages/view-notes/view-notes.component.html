@@ -1,0 +1,101 @@
+<div class="row d-flex justify-content-center">
+	<div
+		class="col-xl-3 col-lg-4 col-md-6"
+		style="max-width: 450px; min-width: 400px"
+		*ngFor="let note of noteList; index as i"
+	>
+		<form #edditNote="ngForm" (ngSubmit)="ngSubmitHandler(i)">
+			<mat-card class="m-2">
+				<div class="row">
+					<div class="col">
+						<mat-form-field *ngIf="editList[i]" floatLabel="never">
+							<input
+								type="text"
+								class="form-control"
+								name="category"
+								#category="ngModel"
+								[(ngModel)]="noteList[i].cat"
+								matInput
+							/>
+						</mat-form-field>
+
+						<mat-card-title *ngIf="!editList[i]">{{
+							noteList[i].cat
+						}}</mat-card-title>
+						<br />
+						<mat-form-field *ngIf="editList[i]" floatLabel="never">
+							<input
+								type="text"
+								class="form-control"
+								name="title"
+								#title="ngModel"
+								[(ngModel)]="noteList[i].title"
+								matInput
+							/>
+						</mat-form-field>
+
+						<mat-card-title *ngIf="!editList[i]">{{
+							noteList[i].title
+						}}</mat-card-title>
+					</div>
+					<div class='mr-2'>
+						<button
+							mat-mini-fab
+							color="primary"
+							type="button"
+							aria-label="Edit Button"
+							(click)="ToggleEdit(i)"
+							*ngIf="!editList[i]"
+						>
+							<mat-icon>edit</mat-icon>
+						</button>
+						<button
+							mat-mini-fab
+							color="primary"
+							type="button"
+							aria-label="Edit Button"
+							(click)="ToggleEdit(i)"
+							*ngIf="editList[i]"
+						>
+							<mat-icon>close</mat-icon>
+						</button>
+						<button
+							mat-mini-fab
+							color="primary"
+							aria-label="Save Button"
+							type="submit"
+							*ngIf="editList[i]"
+						>
+							<mat-icon>save</mat-icon>
+						</button>
+						<button mat-mini-fab color="warn" type="button" *ngIf="editList[i]"
+						(click) = "onTrashClicked(noteList[i].notesId, i)">
+							<mat-icon>delete</mat-icon>
+						</button>
+					</div>
+				</div>
+				<br />
+				<mat-divider></mat-divider>
+				<br />
+				<mat-card-content>
+					<mat-form-field *ngIf="editList[i]" floatLabel="never"
+                            style='width: 100%;'>
+						<textarea
+							id=""
+							class="form-control"
+							name="content"
+							matInput
+							ngModel
+							#content="ngModel"
+							[(ngModel)]="noteList[i].content"
+							required
+							style='resize: none;'
+							cdkTextareaAutosize
+						></textarea>
+					</mat-form-field>
+					<p *ngIf="!editList[i]">{{ noteList[i].content }}</p>
+				</mat-card-content>
+			</mat-card>
+		</form>
+	</div>
+</div>

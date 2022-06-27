@@ -1,0 +1,12 @@
+button {
+    display: none;
+    margin: 2px;
+    opacity: .6;
+}
+button:hover {
+    opacity: 1;
+}
+mat-card:hover button{
+    display: block;
+    transition: 0.4s;
+}

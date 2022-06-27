@@ -1,0 +1,14 @@
+
+<mat-card class="w-100 text-center p-0">
+    <mat-card (click)="showFiller = !showFiller" class="title text-center p-0 mb-2" title="click to open timer">{{ timerService.title }}</mat-card>
+  <div *ngIf="showFiller">
+    <span *ngIf="timerService.initTimer.hours > 0 "  title="Hour(s)">{{ timerService.initTimer.getHours() | number:'2.0'}}:</span>
+    <span *ngIf="timerService.initTimer.minutes > 0 " title="minute(s)">{{ timerService.initTimer.getMinutes() | number:'2.0'}}:</span>
+    <span *ngIf="timerService.initTimer.seconds > 0 " title="Second(s)">{{ timerService.initTimer.getSeconds()| number:'2.0'}}</span>
+    <div class="text-center">
+      <button mat-button (click)="timerService.start()" [disabled]="timerService.disabled" title="Play" alt="Play"><mat-icon>play_arrow</mat-icon></button>
+      <button [disabled]="!timerService.disabled" mat-button title="Stop" alt="Stop"(click)="timerService.stop()"><mat-icon>stop</mat-icon></button>
+      <button mat-button title="Timer Setting" (click)="openDialog()"><mat-icon>settings</mat-icon></button>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,15 @@
+<div class="row d-flex justfiy-content-center">
+	<div
+		class="col-xl-3 col-lg-4 col-md-6 m-2"
+		style="max-width: 450px; min-width: 400px"
+		*ngFor="let set of currentSet"
+	>
+		<a routerLink="{{'/view-flash-cards/' + set.setId }}">
+			<mat-card>
+				<mat-card-title>
+					<div class="text-center">{{ set.setName }}</div>
+				</mat-card-title>
+			</mat-card></a
+		>
+	</div>
+</div>

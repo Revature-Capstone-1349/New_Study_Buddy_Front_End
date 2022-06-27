@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-header class="d-flex justify-content-center">
+		<mat-card-title>Create New Set</mat-card-title>
+	</mat-card-header>
+    <mat-divider></mat-divider>
+    <form class='form' #setsForm='ngForm' (ngSubmit)="addSetFormHandler()">
+        <mat-form-field appearance="standard" class="input-fields form-full-width" hideRequiredMarker>
+			<mat-label>Set Name</mat-label>
+			<input matInput [(ngModel)]='setItem.setName' name="setName" required/>
+		</mat-form-field>
+		<br>
+		<mat-checkbox [(ngModel)]='privacy' name='privacy'>Public</mat-checkbox>
+        <div class="d-flex">
+			<button mat-raised-button color="primary" type="submit" class="btn-block">Submit</button>
+		</div>
+    </form>
+</mat-card>

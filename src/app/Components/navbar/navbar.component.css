@@ -1,0 +1,19 @@
+mat-toolbar {
+    color: rgba(242, 105, 38);
+    background-color: rgba(242, 105, 38);
+    width: 100%;
+    justify-content: space-between;
+    margin: 0;
+}
+
+
+
+.logo-revature {
+    font-size:x-large;
+    color: var(--accent-color);
+}
+
+a{
+    color:#FF8F00;
+    text-decoration: none;
+};

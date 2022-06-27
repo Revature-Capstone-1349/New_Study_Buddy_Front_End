@@ -1,0 +1,17 @@
+mat-card{
+    background-color: rgba(242, 105, 38);
+}
+
+mat-card-header{
+    font-family: 'FuturaBold';
+}
+
+p{
+    font-family: 'FuturaBook';
+}
+
+button{
+    font-family: 'FuturaHeavy';
+    background-color: white;
+
+}

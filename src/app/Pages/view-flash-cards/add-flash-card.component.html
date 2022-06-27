@@ -1,0 +1,45 @@
+<mat-card>
+	<mat-card-header class="d-flex justify-content-center">
+		<mat-card-title>Create New Card</mat-card-title>
+	</mat-card-header>
+	<mat-divider></mat-divider>
+	<form class="form" #AddFlashCard="ngForm" (ngSubmit)="onSubmitHandler()">
+		<mat-form-field
+			appearance="standard"
+			class="input-fields form-full-width"
+			hideRequiredMarker
+			style="width: 100% !important"
+		>
+			<mat-label>Term</mat-label>
+			<input
+				matInput
+				[(ngModel)]="cardItem.def"
+				name="setName"
+				class="form-full-width"
+				required
+			/>
+		</mat-form-field>
+		<br />
+		<mat-form-field
+			appearance="standard"
+			class="input-fields form-full-width"
+			hideRequiredMarker
+			style="width: 100% !important"
+		>
+			<mat-label>Definition</mat-label>
+			<input
+				matInput
+				[(ngModel)]="cardItem.term"
+				name="setName"
+				class="form-full-width"
+				required
+			/>
+		</mat-form-field>
+
+		<div class="d-flex flex-row justify-content-center">
+			<button mat-raised-button color="primary" type="submit" class="btn-block">
+				Submit
+			</button>
+		</div>
+	</form>
+</mat-card>

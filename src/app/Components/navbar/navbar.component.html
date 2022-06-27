@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="row pl-0" mat-typography>
+	<button mat-icon-button (click)="hideDrawer = !hideDrawer" style="margin: 10px">
+		<mat-icon aria-label="Menu">menu</mat-icon>
+	</button>
+	<div class="col d-flex">
+		<div class="pt-1">
+			<a class='mat-h1' style='font-weight: 500;' routerLink="/home">STUDY BUDDY</a>
+		</div>
+	</div>
+	<a
+		class="ml-2"
+		mat-raised-button
+		color="accent"
+		routerLink="/login"
+		routerLinkActive="mat-accent"
+		*ngIf="!logger"
+		>Login <mat-icon color="basic">login</mat-icon></a
+	>
+	<a
+		class="ml-2"
+		mat-raised-button
+		color="accent"
+		routerLink="/register"
+		routerLinkActive="mat-accent"
+		*ngIf="!logger"
+		>Register</a
+	>
+</mat-toolbar>

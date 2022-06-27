@@ -1,0 +1,32 @@
+<mat-card class="w-100 text-center">
+    <h1 color="primary">Study Timer</h1>
+    <mat-form-field appearance="fill" class="w-25 ml-1 mr-1">
+        <mat-label>Hours</mat-label>
+        
+        <input matInput type="number" min="0" max="59" [(ngModel)]="timerService.studyTimer.hours" value="{{ [(timerService.studyTimer.hours)] }}">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-25 ml-1 mr-1">
+        <mat-label>Minutes </mat-label>
+        <input matInput type="number" min="0" max="59" [(ngModel)]="timerService.studyTimer.minutes" value="{{ [(timerService.studyTimer.minutes)] }}">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-25 ml-1 mr-1">
+        <mat-label>Seconds</mat-label>
+        <input matInput type="number" min="0" max="59" [(ngModel)]="timerService.studyTimer.seconds" value="{{ [(timerService.studyTimer.seconds)] }}">
+    </mat-form-field>
+    
+    <mat-divider></mat-divider>
+    <h1 class="mt-2" color="primary">Snack Break</h1>
+    <mat-form-field appearance="fill" class="w-25 ml-1 mr-1">
+        <mat-label>Hours</mat-label>
+        <input matInput type="number" min="0" max="59" [(ngModel)]="timerService.breakTimer.hours" value="{{ [timerService.breakTimer.hours] }}">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-25 ml-1 mr-1">
+        <mat-label>Minutes </mat-label>
+        <input matInput type="number" min="0" max="59" [(ngModel)]="timerService.breakTimer.minutes" value="{{ [timerService.breakTimer.minutes] }}">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-25 ml-1 mr-1">
+        <mat-label>Seconds</mat-label>
+        <input matInput type="number" min="0" max="59" [(ngModel)]="timerService.breakTimer.seconds" value="{{ [timerService.breakTimer.seconds] }}">
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" (click)="saveTimer()">Save</button>
+</mat-card>

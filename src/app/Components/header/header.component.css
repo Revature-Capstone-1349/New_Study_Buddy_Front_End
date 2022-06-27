@@ -1,0 +1,14 @@
+h1{
+    font-family: 'FuturaBold';
+}
+
+p{
+    font-family: 'FuturaMedium';
+}
+
+a{
+    font-family: 'FuturaMedium';
+}
+mat-card{
+    padding: 0;
+}

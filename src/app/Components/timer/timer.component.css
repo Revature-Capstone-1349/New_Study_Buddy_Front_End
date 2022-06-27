@@ -1,0 +1,17 @@
+span {
+  font-size: 25px;
+}
+
+mat-card {
+  background-color: #ffd740;
+  color: #673ab7;
+}
+
+.title {
+  background-color: #673ab7;
+  color: #ffd740;
+}
+
+.title:hover {
+  cursor: pointer;
+}

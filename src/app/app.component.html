@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="d-flex h-100">
+	
+	<mat-drawer-container class="mat-typography" autosize>
+		<mat-drawer #drawer mode="side" disableClose="true" opened="true">
+			<mat-nav-list>
+				<a routerLink="/flash-cards">
+					<mat-list-item>
+						<mat-icon mat-list-icon>crop_portrait</mat-icon>
+						<h4 mat-line *ngIf="hideDrawer">Flash Cards</h4>
+					</mat-list-item>
+				</a>
+				<a routerLink="/notes">
+					<mat-list-item>
+						<mat-icon mat-list-icon>draw</mat-icon>
+						<h4 mat-line *ngIf="hideDrawer">Notes</h4>
+					</mat-list-item>
+				</a>
+				<a routerLink="/addNotetest">
+					<mat-list-item>
+						<mat-icon mat-list-icon>add</mat-icon>
+						<h4 mat-line *ngIf="hideDrawer">Add Note</h4>
+					</mat-list-item>
+				</a>
+				<div class='m-3'>
+				<app-timer *ngIf="hideDrawer"></app-timer></div>
+			</mat-nav-list>
+		</mat-drawer>
+		<mat-drawer-content>
+				<router-outlet></router-outlet>
+		</mat-drawer-content>
+	</mat-drawer-container>
+</div>

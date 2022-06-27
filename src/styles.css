@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@font-face {
+    font-family: "FuturaBold";
+    src: local("FuturaBold"), url(./assets/Fonts/Futura-Std-Bold.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "FuturaBook";
+    src: local("FuturaBold"), url(./assets/Fonts/Futura-Std-Book.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "FuturaHeavy";
+    src: local("FuturaBold"), url(./assets/Fonts/Futura-Std-Heavy.otf) format("truetype");
+}
+
+@font-face {
+    font-family: "FuturaMedium";
+    src: local("FuturaBold"), url(./assets/Fonts/Futura-Std-Medium.otf) format("truetype");
+}
