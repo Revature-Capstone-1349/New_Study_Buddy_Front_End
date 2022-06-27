@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   hidePass = true;
   user: User = new User();
   display = false;
+  logger: boolean = false;
 
   constructor(
     private userDataService: UserDataService,
@@ -21,15 +22,18 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.logger = this.sessionService.checkIfLogged();
   }
 
 
-  onSubmitHandler() {
+  login() {
     this.userDataService.login(this.user).subscribe(response => {
 
       if (response !== null) {
         this.sessionService.createSession("userAccount", response)
         this.user = this.sessionService.getSession("userAccount")
+        console.log(this.user);
+        this.sessionService.reloadCurrentPage("");
       } else {
         this.display = true;
       }
