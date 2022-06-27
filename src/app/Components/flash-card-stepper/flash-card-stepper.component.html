@@ -1,0 +1,26 @@
+<div class="container">
+    <mat-card class="m-1">
+    <div class="d-flex flex-column">
+        <button mat-mini-fab color="warn" class="align-self-end" (click)="closeClick()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <br />
+    <mat-card-content>
+        <br />
+        <mat-card-title class="terms" class="text-center">{{ flashCardList[index].term }}</mat-card-title>
+        <br />
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-mini-fab color="primary" (click)="openDialog(flashCardList[index].def)" aria-label="Save Button" class="m-2">
+            <mat-icon>visibility</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
+<button class="leftBtn" type="button" mat-raised-button color="primary" (click)="previousCard()">
+    <mat-icon>arrow_back</mat-icon>
+</button>
+<button class="rightBtn" type="button" mat-raised-button color="primary" (click)="nextCard()">
+    <mat-icon>arrow_forward</mat-icon>
+</button>
+</div>

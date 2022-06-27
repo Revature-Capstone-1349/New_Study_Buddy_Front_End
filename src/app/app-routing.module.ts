@@ -11,6 +11,7 @@ import { ViewNotesComponent } from './Pages/view-notes/view-notes.component';
 import { ViewFlashCardsComponent } from './Pages/view-flash-cards/view-flash-cards.component';
 import { FlashCardSetComponent } from './Pages/flash-card-set/flash-card-set.component';
 import { AddNotesComponent } from './Components/add-notes/add-notes.component';
+import { FlashCardStepperComponent } from './Components/flash-card-stepper/flash-card-stepper.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   // test routes
   { path: 'flash-card-test', component: ViewFlashCardsComponent },
   { path: 'addNotetest', component: AddNotesComponent },
+  { path: 'view-flash-cards/:setId/:cardIndex', component:FlashCardStepperComponent},
   // 
   { path: '**', component: ErrorPageComponent },
 
