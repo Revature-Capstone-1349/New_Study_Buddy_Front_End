@@ -1,4 +1,4 @@
-import { inject, Injectable, resolveForwardRef } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from "@angular/router";
 import { User } from '../Model/user';
@@ -17,18 +17,15 @@ export class SessionsService {
 
     /**
      * used to create a new cookie. Name the cookie whatever you want and the data you want it to store.
+     * used for login.
      * @param cookieName
      * @param data
      */
     createSession(cookieName: string, data: any) {
         if (cookieName === "userAccount") {
             this.cookieService.set(cookieName, JSON.stringify(data));
-            //console.log(JSON.parse(this.cookieService.get("userAccount")))
             this.userAccount = JSON.parse(this.cookieService.get("userAccount"));
-            //console.log(this.userAccount)
-            this.cookieService.set("loggedin", "true");
         }
-        this.router.navigateByUrl("");
     }
 
     /**
@@ -43,59 +40,58 @@ export class SessionsService {
     }
 
     getSession(cookieName: string): any {
-        let cookie: any;
-        if (cookieName === 'userAccount') {
-            cookie = this.userAccountNormalizer(JSON.parse(this.cookieService.get(cookieName)));
-            return cookie;
-        } else {
-            cookie = JSON.parse(this.cookieService.get(cookieName))
-            return cookie;
-        }
+        let c :any;
+        (cookieName === 'userAccount')? c = this.userAccountNormalizer(JSON.parse(this.cookieService.get('userAccount'))) 
+            : c = JSON.parse(this.cookieService.get(cookieName));
+        return c;
+        
     }
 
     logout() {
         this.cookieService.deleteAll();
         this.userAccount = new User();
-        this.router.navigateByUrl("");
     }
 
     /**
      * if user is logged in this will redirect the user to root/homepage.
      */
     sessionActive() {
-        this.checkSession = this.checkLoggedInActive();
+        this.checkSession = this.checkIfLogged();
         (this.checkSession == true)? this.loggedInDirector() : (this.checkSession === false)? this.loggedOutDirector() : "";
     }
 
     /**
      * returns a boolean to see if you're logged in.
+     * can be used for hiding elements that shouldnt be seen or not via logged in or out.
      */
-    checkLoggedInActive(): boolean {
-        return this.cookieService.check("loggedin")
+    checkIfLogged(): boolean {
+        return this.cookieService.check("userAccount")
     }
 
     /**
      * if user logged in redirect user to root/homepage.
      */
     loggedInDirector() {
-        (this.checkLoggedInActive() == true)? this.router.navigateByUrl("") : "";
+        (this.checkIfLogged() == true)? this.router.navigateByUrl("") : "";
     }
 
     /**
      * if user logged out redirect to root/homepage.
      */
     loggedOutDirector() {
-        (this.checkLoggedInActive() === false)? this.router.navigateByUrl("") : "";
+        (this.checkIfLogged() === false)? this.router.navigateByUrl("") : "";
     }
 
     /**
-     * if user logged out redirect to homepage.
+     * checks if cookie exist
      */
-    checkCookieActive(cookieName: string): boolean {
+    checkCookieExist(cookieName: string): boolean {
         return this.cookieService.check(cookieName);
     }
 
-    // reloadCurrentPage() {
-    //     window.location.reload();
-    // }
+    reloadCurrentPage(path: string) {
+        this.router.navigate([path]).then(() => {
+            window.location.reload();
+        });
+    }
 }
