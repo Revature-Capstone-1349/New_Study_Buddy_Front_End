@@ -89,7 +89,7 @@ export class SessionsService {
         return this.cookieService.check(cookieName);
     }
 
-    reloadCurrentPage(path: string) {
+    redirectThanReload(path: string) {
         this.router.navigate([path]).then(() => {
             window.location.reload();
         });
