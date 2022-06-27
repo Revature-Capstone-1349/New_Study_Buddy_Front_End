@@ -1,8 +1,8 @@
-<mat-card class="mt-3 mat-typography">
+<mat-card class="mt-3 mat-typography" *ngIf="!logger">
 	<mat-card-content>
 		<mat-card-title>Login</mat-card-title>
 		<mat-card-subtitle>Enter Email and Password</mat-card-subtitle>
-		<form #loginForm="ngForm" (ngSubmit)="onSubmitHandler()">
+		<form #loginForm="ngForm" (ngSubmit)="login()">
 			<mat-form-field appearance="standard" class="input-fields" hideRequiredMarker>
 				<mat-label>Email</mat-label>
 				<input

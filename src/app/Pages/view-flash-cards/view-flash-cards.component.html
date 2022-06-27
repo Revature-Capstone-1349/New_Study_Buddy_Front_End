@@ -5,8 +5,8 @@
 		*ngFor="let flashcard of flashCardList"
 	>
 		<mat-card class="m-2">
-			<div class="d-flex flex-column">
-				<button mat-mini-fab color="warn" class="align-self-end">
+			<div class="d-flex flex-column del-flashcard-btn">
+				<button mat-mini-fab color="warn" class="align-self-end" (click)="deleteFlashcard(flashcard.fcardId)">
 					<mat-icon>delete</mat-icon>
 				</button>
 			</div>
@@ -30,6 +30,10 @@
 		</mat-card>
 	</div>
 </div>
+
+<button class="start-card-btn" mat-raised-button color='primary' routerLink="{{'/view-flash-cards/' + setId + '/0'}}" *ngIf="flashCardList.length != 0">
+	Study
+</button>
 
 <button class="add-card-btn" mat-fab (click)="openCreateFlashCardDialog()">
 	<mat-icon>add_to_photos</mat-icon>

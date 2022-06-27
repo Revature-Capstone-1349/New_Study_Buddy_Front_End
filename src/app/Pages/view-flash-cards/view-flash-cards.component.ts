@@ -13,16 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class ViewFlashCardsComponent implements OnInit {
   setId: any;
-
-  // Flash Card Dummy Data
   flashCardList: any[] = []
-  notifierSubscription: Subscription = this.flashCardService.subjectNotifer.subscribe(notifed =>{
-    this.flashCardService.flashCardBySetId(this.setId).subscribe({
-      next: (res) =>{
-        this.flashCardList = res
-      }
-    })
-  })
   constructor(
     private dialog: Dialog,
     private activedRoute: ActivatedRoute,
@@ -50,6 +41,22 @@ export class ViewFlashCardsComponent implements OnInit {
     })
   }
 
+  deleteFlashcard(fCardId: number){
+    this.flashCardService.deleteFlashCardById(fCardId).subscribe({
+      complete: ()=>{
+        this.flashCardService.notifyAboutChange();
+      }
+    })
+  }
+
+  notifierSubscription: Subscription = this.flashCardService.subjectNotifer.subscribe(notifed =>{
+    this.flashCardService.flashCardBySetId(this.setId).subscribe({
+      next: (res) =>{
+        this.flashCardList = res
+        console.log(this.flashCardList);
+      }
+    })
+  })
 
 }
 
@@ -62,7 +69,7 @@ export class ViewFlashCardsDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: DialogRef<ViewFlashCardsDialogComponent>,
-    @Inject(DIALOG_DATA) public dialogData: any,
+    @Inject(DIALOG_DATA) public dialogData: any
   ) {
     console.log(dialogData)
   }
@@ -95,7 +102,6 @@ export class AddFlashCardComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-
       },
       complete: () =>{
         this.flashCardService.notifyAboutChange();

@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="row pl-0" mat-typography>
-	<button mat-icon-button (click)="hideDrawer = !hideDrawer" style="margin: 10px">
+	<button mat-icon-button (click)="hideDrawer = !hideDrawer" style="margin: 10px" *ngIf="logger">
 		<mat-icon aria-label="Menu">menu</mat-icon>
 	</button>
 	<div class="col d-flex">
@@ -25,4 +25,14 @@
 		*ngIf="!logger"
 		>Register</a
 	>
+	<a
+	class="ml-2"
+	mat-raised-button
+	color="accent"
+	href=""
+	routerLinkActive="mat-accent"
+	*ngIf="logger"
+	(click)="onClickLogout()"
+	>Logout <mat-icon color="basic">logout</mat-icon></a
+>
 </mat-toolbar>

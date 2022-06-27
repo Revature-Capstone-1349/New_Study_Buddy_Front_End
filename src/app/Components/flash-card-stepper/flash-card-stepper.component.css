@@ -1,0 +1,11 @@
+.container{
+    margin-top: 10%;
+}
+.leftBtn{
+    margin: 4px;
+    float: left;
+}
+.rightBtn{
+    margin: 4px;
+    float: right;
+}

@@ -26,6 +26,7 @@ import { MaterialModule } from './Modules/material.module';
 import { DrawerService } from './Service/drawer.service';
 import { SetsComponent } from './Components/sets/sets.component';
 import { AddSetComponentDialog, FlashCardSetComponent } from './Pages/flash-card-set/flash-card-set.component';
+import { FlashCardStepperComponent } from './Components/flash-card-stepper/flash-card-stepper.component';
 
 
 
@@ -48,7 +49,8 @@ import { AddSetComponentDialog, FlashCardSetComponent } from './Pages/flash-card
     BodyComponent,
     SetsComponent,
     FlashCardSetComponent,
-    AddSetComponentDialog
+    AddSetComponentDialog,
+    FlashCardStepperComponent
 
   ],
   imports: [

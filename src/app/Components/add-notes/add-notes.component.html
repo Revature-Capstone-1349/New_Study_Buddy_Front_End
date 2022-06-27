@@ -1,46 +1,66 @@
 <mat-card class="container mt-4">
-<div class="container row">
-    <div class="col-lg-3">
-    <form #noteForm="ngForm" (ngSubmit) = "onSubmitHandler()">
-        <mat-label for="Note Subject" class="h5">Note Title</mat-label>
-        <mat-form-field  class="input-fields" >
-            <input type="text" class="form-control" name="title" matInput ngModel #title="ngModel" required
-            [(ngModel)]="note.title">
-        </mat-form-field>
-        
-        <mat-label for="Note Suject" class="h5">Note Category</mat-label>
-        <mat-form-field>
-            <input type="text" class="form-control" name="cat" matInput ngModel #cat="ngModel" required
-            [(ngModel)]="note.cat">
-        </mat-form-field>
+	<form #noteForm="ngForm" (ngSubmit)="onSubmitHandler()">
+		<mat-form-field
+			class="input-fields"
+			hideRequiredMarker
+			class="form-full-width"
+			floatLabel="always"
+		>
+			<mat-label for="Note Subject" class="h5">Note Title</mat-label>
+			<input
+				type="text"
+				cdkTextareaAutosize
+				class="form-control"
+				name="title"
+				matInput
+				ngModel
+				#title="ngModel"
+				required
+				[(ngModel)]="note.title"
+			/>
+		</mat-form-field>
 
-        <mat-label for="Note Text" class="h5">Content</mat-label>
-        <mat-form-field>            
-            <textarea name="" id="" cols="30" rows="10" name="content" matInput ngModel #content="ngModel" required
-            [(ngModel)]="note.content"></textarea>
-        </mat-form-field>
-        <!-- <mat-form-field>   
-        <input type = "submit" class="btn-block btn-primary" value="Add Note"/>
-        </mat-form-field> -->
+		<mat-form-field hideRequiredMarker class="form-full-width" floatLabel="always">
+			<mat-label for="Note Suject" class="h5">Note Category</mat-label>
+			<input
+				type="text"
+				cdkTextareaAutosize
+				class="form-control"
+				name="cat"
+				matInput
+				ngModel
+				#cat="ngModel"
+				required
+				[(ngModel)]="note.cat"
+			/>
+		</mat-form-field>
 
-        <div class="d-flex flex-row">
-            <button type ="submit" mat-raised-button color="primary" type="submit"
-                class="btn-block center">
-                Submit
-            </button>
-    
-        <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        class="btn-block center"
-        >
-        Close
-        </button>
-    
-    </div>
-    
-</form>
-</div>
-</div>
+		<mat-form-field class="form-full-width" hideRequiredMarker floatLabel="always">
+			<mat-label for="Note Text" class="h5">Content</mat-label>
+			<textarea
+				name=""
+				id=""
+				cdkTextareaAutosize
+				style="min-height: 100px"
+				name="content"
+				matInput
+				ngModel
+				#content="ngModel"
+				required
+				[(ngModel)]="note.content"
+			></textarea>
+		</mat-form-field>
+			<button
+				type="submit"
+				mat-raised-button
+				color="primary"
+				class="btn-block center mb-2"
+				[disabled]="noteForm.invalid"
+			>
+				Submit
+			</button>
+
+	</form>
+		<button mat-raised-button color="primary" class="btn-block center" (click)="closeDialog()">Close</button>
+
 </mat-card>
