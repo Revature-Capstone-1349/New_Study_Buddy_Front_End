@@ -2,8 +2,10 @@
     <div class="jumbotron text text-center" style='max-width: 800px;'>
         <h1 class="display-4">Welcome to the Revature Studdy Buddy!</h1>
         <p class="lead">This website allows users to create, store, and share flashcards and notes for Revature study materials.</p>
-        <hr class="my-4">
-        <p>Click below to create an account to store your notes and flashcards</p>
-        <a mat-raised-button color="primary" routerLink="/register" routerLinkActive="mat-accent" >Create Account</a>
+        <div *ngIf="!logger">
+          <hr class="my-4">
+          <p>Click below to create an account to store your notes and flashcards</p>
+          <a mat-raised-button color="primary" routerLink="/register" routerLinkActive="mat-accent" >Create Account</a>
+        </div>
       </div>
   </mat-card>

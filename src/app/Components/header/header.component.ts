@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionsService } from 'src/app/Service/sessions.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  logger : any;
+  constructor(private sessionService : SessionsService) { }
 
   ngOnInit(): void {
+    this.logger = this.sessionService.checkIfLogged();
   }
 
 }
