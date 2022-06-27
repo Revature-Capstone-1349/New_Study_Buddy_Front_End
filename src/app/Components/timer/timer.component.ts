@@ -10,7 +10,7 @@ import { CreateTimerComponent } from '../create-timer/create-timer.component';
 })
 export class TimerComponent implements OnInit {
   break = false;
-  showFiller = false;
+  showFiller = true;
 
   constructor(
     public timerService: TimerService,
