@@ -11,6 +11,7 @@ mat-card:hover button{
     transition: 0.4s;
 }
 
+
 .add-note-btn {
     opacity: 1;
     display: block;
@@ -23,5 +24,21 @@ mat-card:hover button{
 }
 .search{
     margin: 10px;
+    background-color: white;
+    border: 2px solid rgb(236, 236, 236);
+    border-radius: 10px 10px;
+    box-shadow: 7px 5px rgba(159, 156, 156, 0.382);
     float: right;
+    position: sticky;
+    /* right:70% ; */
+    top:5%;
+    right: 5%
+
+}
+.search mat-list-option{
+    border-radius: 10px 10px;
+}
+.m-2{
+    border-radius: 10px 10px;
+    box-shadow: 7px 5px rgba(137, 137, 137, 0.2);
 }
