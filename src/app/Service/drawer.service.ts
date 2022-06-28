@@ -4,6 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DrawerService {
-  isExpanded: boolean = false;
+  isExpanded: boolean = true;
   constructor() { }
 }
