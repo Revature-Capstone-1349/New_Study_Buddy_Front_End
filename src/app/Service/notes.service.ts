@@ -26,6 +26,9 @@ export class NotesService {
  getNotesByUserId(id: any): Observable<any>{
     return this.http.get<any>(`http://localhost:8080/api/Notes/byUser/${id}`);
   }
+ getNotesBySetId(id: any, user: any): Observable<any>{
+    return this.http.get<any>(`http://localhost:8080/api/Notes/bySet/${id}/${user}`);
+  }
  
   addNote(notes : any): Observable<any>{
     return this.http.post<any>("http://localhost:8080/api/Notes", notes);

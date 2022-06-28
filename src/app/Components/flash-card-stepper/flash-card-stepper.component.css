@@ -9,3 +9,10 @@
     margin: 4px;
     float: right;
 }
+.add-note-btn {
+    opacity: 1;
+    display: block;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}

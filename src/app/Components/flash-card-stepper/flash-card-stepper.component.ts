@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AddFlashCardComponent, ViewFlashCardsDialogComponent } from 'src/app/Pages/view-flash-cards/view-flash-cards.component';
 import { FlashCardService } from 'src/app/Service/flash-card.service';
 import { Subscription } from 'rxjs';
+import { AddNotesComponent } from '../add-notes/add-notes.component';
 
 @Component({
   selector: 'app-flash-card-stepper',
@@ -67,6 +68,11 @@ nextCard(){
 closeClick(){
   console.log("Close was clicked")
   this.route.navigate([`view-flash-cards/${this.setId}`])
+}
+
+
+openCreateNotesDialog():void{
+  this.dialog.open(AddNotesComponent,{data:this.setId})
 }
 
 }

@@ -1,3 +1,31 @@
+<div class="search">
+	<!-- <mat-card>
+	<form #search="ngForm" (ngSubmit)="setSearch(search)">
+		<mat-form-field appearance="fill">
+			<mat-select>
+				<mat-option  matInput value="-1" >None</mat-option>
+			  	<mat-option
+			  		matInput
+			   		*ngFor="let set of setList"
+			   		[value]="set.setId">{{set.setName}}
+				</mat-option>
+				</mat-select>
+		  </mat-form-field>
+		<button mat-raised-button type="submit">Search</button>
+	</form>
+</mat-card> -->
+
+<mat-selection-list #search [multiple]="false" >
+  <mat-list-option value=-1 (click) = "setSearch(-1)" > Display All</mat-list-option>
+  <mat-list-option *ngFor="let set of setList" [value]="set.setId" (click) = "setSearch(set.setId)">
+	{{set.setName}}
+  </mat-list-option>
+</mat-selection-list>
+
+
+
+</div>
+
 <div class="row d-flex justify-content-center">
 	<div
 		class="col-xl-3 col-lg-4 col-md-6"
@@ -93,7 +121,9 @@
 							cdkTextareaAutosize
 						></textarea>
 					</mat-form-field>
-					<p *ngIf="!editList[i]">{{ noteList[i].content }}</p>
+					<div class="wrap">
+						<p *ngIf="!editList[i]">{{ noteList[i].content }}</p>
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</form>
