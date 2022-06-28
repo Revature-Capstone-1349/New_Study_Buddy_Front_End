@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.logger = this.sessionService.checkIfLogged();
+    this.sessionService.pagePreventor();
   }
 
 
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.sessionService.createSession("userAccount", response)
         this.user = this.sessionService.getSession("userAccount")
         console.log(this.user);
-        this.sessionService.reloadCurrentPage("");
+        this.sessionService.redirectThanReload("");
       } else {
         this.display = true;
       }

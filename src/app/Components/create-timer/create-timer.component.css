@@ -1,14 +1,14 @@
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
-  
-  mat-card {
-    background-color: #ffd740;
-    color: #673ab7;
-  }
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+mat-card {
+  background-color: #ffd740;
+  color: #673ab7;
+}

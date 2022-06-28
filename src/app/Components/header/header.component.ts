@@ -7,13 +7,11 @@ import { SessionsService } from 'src/app/Service/sessions.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  logger:boolean;
-
-  constructor(private sessionService: SessionsService) {
-    this.logger = this.sessionService.checkIfLogged();
-   }
+  logger : any;
+  constructor(private sessionService : SessionsService) { }
 
   ngOnInit(): void {
+    this.logger = this.sessionService.checkIfLogged();
   }
 
 }

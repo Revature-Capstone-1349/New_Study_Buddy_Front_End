@@ -9,6 +9,7 @@ import { DrawerService } from 'src/app/Service/drawer.service';
 })
 export class NavbarComponent implements OnInit {
 
+  userName :string = ""
   user: any;
   logger: boolean = false;
 
@@ -16,6 +17,9 @@ export class NavbarComponent implements OnInit {
             
   ngOnInit(): void {
     this.logger = this.sessionService.checkIfLogged();
+    if (this.logger) {
+      this.userName = this.sessionService.getSession("userAccount").name;
+    }
   }
 
   onClickLogout(){
