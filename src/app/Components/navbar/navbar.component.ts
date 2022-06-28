@@ -9,6 +9,7 @@ import { DrawerService } from 'src/app/Service/drawer.service';
 })
 export class NavbarComponent implements OnInit {
 
+  userName = this.sessionService.getSession("userAccount").name;
   user: any;
   logger: boolean = false;
 

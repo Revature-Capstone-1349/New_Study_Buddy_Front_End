@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.logger = this.sessionService.checkIfLogged();
+    this.sessionService.pagePreventor();
   }
 
 

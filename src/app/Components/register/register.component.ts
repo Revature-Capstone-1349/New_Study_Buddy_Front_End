@@ -1,8 +1,9 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Model/user';
 import { UserDataService } from 'src/app/Service/user-data.service';
 
 import { Router } from "@angular/router";
+import { SessionsService } from 'src/app/Service/sessions.service';
 
 @Component({
   selector: 'app-register',
@@ -16,13 +17,14 @@ export class RegisterComponent implements OnInit {
   registerStatus: boolean = false;
 
   constructor(
+    private sessionService: SessionsService,
     private userDataService: UserDataService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    
-  }
+    this.sessionService.pagePreventor();
+   }
 
   onSubmitHandler(){
      if (this.user.name !== undefined
