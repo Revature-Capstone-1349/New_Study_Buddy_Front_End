@@ -18,3 +18,10 @@ mat-card:hover button{
     right: 20px;
     bottom: 20px;
 }
+.wrap{
+    word-wrap: break-word;
+}
+.search{
+    margin: 10px;
+    float: right;
+}

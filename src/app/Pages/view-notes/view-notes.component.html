@@ -1,3 +1,16 @@
+<div class="search">
+
+<mat-selection-list #search [multiple]="false" >
+  <mat-list-option value=-1 (click) = "setSearch(-1)" > Display All</mat-list-option>
+  <mat-list-option *ngFor="let set of setList" [value]="set.setId" (click) = "setSearch(set.setId)">
+	{{set.setName}}
+  </mat-list-option>
+</mat-selection-list>
+
+
+
+</div>
+
 <div class="row d-flex justify-content-center">
 	<div
 		class="col-xl-3 col-lg-4 col-md-6"
@@ -93,7 +106,9 @@
 							cdkTextareaAutosize
 						></textarea>
 					</mat-form-field>
-					<p *ngIf="!editList[i]">{{ noteList[i].content }}</p>
+					<div class="wrap">
+						<p *ngIf="!editList[i]">{{ noteList[i].content }}</p>
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</form>

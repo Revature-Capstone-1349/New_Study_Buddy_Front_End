@@ -1,5 +1,5 @@
-import { DialogRef } from '@angular/cdk/dialog';
-import { Component, OnInit } from '@angular/core';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { notes } from 'src/app/Model/notes';
@@ -24,6 +24,7 @@ export class AddNotesComponent implements OnInit {
     private noteService: NotesService,
     private snack: MatSnackBar,
     public dialogRef: DialogRef<ViewFlashCardsComponent>,
+    @Inject(DIALOG_DATA) public dialogData: any,
     public flashcardService: FlashCardService
   ) {
     this.user = session.getSession('userAccount')
@@ -36,6 +37,10 @@ export class AddNotesComponent implements OnInit {
 
   onSubmitHandler() {
     this.note.userId = this.user.userId
+    if(this.dialogData != null && this.dialogData != undefined){
+      this.note.setId = parseInt(this.dialogData)
+    }
+    console.log(this.note)
     this.noteService.addNote(this.note).subscribe({
       next: (res) => {
         this.flashcardService.notifyAboutChange();
