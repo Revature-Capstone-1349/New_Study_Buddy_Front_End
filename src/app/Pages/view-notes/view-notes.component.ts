@@ -27,6 +27,10 @@ export class ViewNotesComponent implements OnInit {
     this.setsSession.setsByUserIdAndPublic(this.user.userId).subscribe({
       next: (res) =>{
         this.setList = res
+      } , error: (err) =>{
+        this.snack.open("There are no sets", "Please make a set", {
+          duration:5000
+        })
       }
     })
   });
@@ -39,6 +43,7 @@ export class ViewNotesComponent implements OnInit {
     private setsSession: SetsService
   ) { 
     this.user = this.session.getSession("userAccount")
+    console.log(this.user)
   }
 
   ngOnInit(): void {
@@ -50,9 +55,14 @@ export class ViewNotesComponent implements OnInit {
       })
     }
     else{
-      this.noteService.getNotesBySetId(this.setIdSearch,this.user.userId).subscribe(response => {
+      this.noteService.getNotesBySetId(this.setIdSearch,this.user.userId).subscribe({
+        next: (response)=>{
         this.noteList  = response
-      })
+      }, error: (err) =>{
+        this.snack.open("There are notes for this set", "Please study", {
+          duration:5000
+        })
+      }})
     }
 
     this.noteList.forEach(element => {
@@ -75,9 +85,15 @@ export class ViewNotesComponent implements OnInit {
       })
     }
     else{
-      this.noteService.getNotesBySetId(this.setIdSearch,this.user.userId).subscribe(response => {
+      this.noteService.getNotesBySetId(this.setIdSearch,this.user.userId).subscribe({
+        next: (response)=>{
         this.noteList  = response
-      })
+      }, error: (err) =>{
+        this.snack.open("There are notes for this set", "Please study", {
+          duration:5000
+        })
+      }})
+
     }
   }
 
@@ -112,9 +128,15 @@ export class ViewNotesComponent implements OnInit {
       })
     }
     else{
-      this.noteService.getNotesBySetId(this.setIdSearch, this.user.userId).subscribe(response => {
-        this.noteList = response
-      })
+      this.noteService.getNotesBySetId(this.setIdSearch,this.user.userId).subscribe({
+        next: (response)=>{
+        this.noteList  = response
+      }, error: (err) =>{
+        this.snack.open("There are notes for this set", "Please study", {
+          duration:5000
+        })
+      }})
+
     }
   })
 
@@ -133,9 +155,14 @@ export class ViewNotesComponent implements OnInit {
    }
    else{
 
-    this.noteService.getNotesBySetId(search, this.user.userId).subscribe(response => {
-      this.noteList = response
-    })
+    this.noteService.getNotesBySetId(this.setIdSearch,this.user.userId).subscribe({
+      next: (response)=>{
+      this.noteList  = response
+    }, error: (err) =>{
+      this.snack.open("There are notes for this set", "Please study", {
+        duration:5000
+      })
+    }})
 
    }
   }
