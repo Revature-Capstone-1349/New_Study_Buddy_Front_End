@@ -17,7 +17,6 @@ export class SessionsService {
     
     /**
      * used to create a new cookie. Name the cookie(cookieName) and the data you want it to store(can be any object or data type).
-     * used for login.
      * @param cookieName
      * @param data
      */
