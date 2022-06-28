@@ -4,6 +4,8 @@ import { Dialog, DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { FlashCardService } from 'src/app/Service/flash-card.service';
 import { Subscription } from 'rxjs';
+import { User } from 'src/app/Model/user';
+import { SessionsService } from 'src/app/Service/sessions.service';
 
 
 @Component({
@@ -13,19 +15,29 @@ import { Subscription } from 'rxjs';
 })
 export class ViewFlashCardsComponent implements OnInit {
   setId: any;
+  owner: boolean = false;
+  user: User = new User();
   flashCardList: any[] = []
   constructor(
     private dialog: Dialog,
     private activedRoute: ActivatedRoute,
-    private flashCardService: FlashCardService
+    private flashCardService: FlashCardService,
+    private sessionService: SessionsService
   ) {
     this.setId = this.activedRoute.snapshot.paramMap.get('setId');
+    this.user = sessionService.getSession("userAccount");
   }
 
   ngOnInit(): void {
+    this.user = this.sessionService.getSession("userAccount");
     this.flashCardService.flashCardBySetId(this.setId).subscribe({
       next: (res) =>{
         this.flashCardList = res
+      }
+    })
+    this.flashCardService.getUserIdByfCardSetId(this.setId).subscribe({
+      next: (res) =>{
+        this.owner = this.user.userId == res;
       }
     })
   }
@@ -53,7 +65,6 @@ export class ViewFlashCardsComponent implements OnInit {
     this.flashCardService.flashCardBySetId(this.setId).subscribe({
       next: (res) =>{
         this.flashCardList = res
-        console.log(this.flashCardList);
       }
     })
   })

@@ -11,9 +11,7 @@ import { SetsService } from 'src/app/Service/sets.service';
   styleUrls: ['./flash-card-set.component.css']
 })
 export class FlashCardSetComponent implements OnInit {
-
   user: User
-
   constructor(
     public dialog: Dialog, 
     private session: SessionsService

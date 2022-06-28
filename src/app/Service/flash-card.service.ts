@@ -44,4 +44,9 @@ export class FlashCardService {
   deleteFlashCardById(fCardId: number): Observable<any>{
     return this.http.delete(`http://localhost:${this.portNumber}/api/flashcards/${fCardId}`);
   }
+
+  // userId by flashcard setId
+  getUserIdByfCardSetId(setId: number): Observable<any>{
+    return this.http.get(`http://localhost:${this.portNumber}/api/flashcards/getOwner/${setId}`)
+  }
 }

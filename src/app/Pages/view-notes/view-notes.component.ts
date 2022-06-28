@@ -27,7 +27,6 @@ export class ViewNotesComponent implements OnInit {
     private dialog: Dialog
   ) { 
     this.user = this.session.getSession("userAccount")
-    console.log(this.user)
   }
 
   ngOnInit(): void {
@@ -73,7 +72,6 @@ export class ViewNotesComponent implements OnInit {
   }
 
   notifierSubScription: Subscription = this.noteService.subjectNotifer.subscribe( notified =>{
-    
     this.noteService.getNotesByUserId(this.user.userId).subscribe(response => {
       this.noteList  = response
     })
