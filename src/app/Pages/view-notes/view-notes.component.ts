@@ -28,6 +28,7 @@ export class ViewNotesComponent implements OnInit {
       next: (res) =>{
         this.setList = res
       } , error: (err) =>{
+        // console.log(err)
         this.snack.open("There are no sets", "Please make a set", {
           duration:5000
         })
@@ -59,6 +60,7 @@ export class ViewNotesComponent implements OnInit {
         next: (response)=>{
         this.noteList  = response
       }, error: (err) =>{
+        // console.log(err)
         this.snack.open("There are notes for this set", "Please study", {
           duration:5000
         })
@@ -89,6 +91,7 @@ export class ViewNotesComponent implements OnInit {
         next: (response)=>{
         this.noteList  = response
       }, error: (err) =>{
+        // console.log(err)
         this.snack.open("There are notes for this set", "Please study", {
           duration:5000
         })
