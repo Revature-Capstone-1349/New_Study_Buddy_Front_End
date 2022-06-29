@@ -4,12 +4,17 @@
 		style="max-width: 450px; min-width: 400px"
 		*ngFor="let set of currentSet"
 	>
-		<a routerLink="{{'/view-flash-cards/' + set.setId }}">
-			<mat-card>
+		<a routerLink="{{'/view-flash-cards/' + set.setId }}" [ngSwitch]="set.userId">
+			<mat-card *ngSwitchCase="currentUser.userId" [style.background-color]="myBgColor" >
 				<mat-card-title>
-					<div class="text-center">{{ set.setName }}</div>
+					<div class="text-center" [style.color]="myFontColor">{{ set.setName }}</div>
 				</mat-card-title>
-			</mat-card></a
-		>
+			</mat-card>
+			<mat-card *ngSwitchDefault [style.background-color]="defaultBgColor" >
+				<mat-card-title>
+					<div class="text-center" [style.color]="defaultFontColor">{{ set.setName }}</div>
+				</mat-card-title>
+			</mat-card>
+		</a>
 	</div>
 </div>
