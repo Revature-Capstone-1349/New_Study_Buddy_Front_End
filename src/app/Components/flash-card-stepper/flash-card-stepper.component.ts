@@ -5,6 +5,7 @@ import { AddFlashCardComponent, ViewFlashCardsDialogComponent } from 'src/app/Pa
 import { FlashCardService } from 'src/app/Service/flash-card.service';
 import { Subscription } from 'rxjs';
 import { AddNotesComponent } from '../add-notes/add-notes.component';
+import { SetsService } from 'src/app/Service/sets.service';
 
 @Component({
   selector: 'app-flash-card-stepper',
@@ -15,6 +16,7 @@ export class FlashCardStepperComponent implements OnInit {
 
   setId: any;
   index : any;
+  setName : any; // name of the set...
 
   // Flash Card Dummy Data
   flashCardList: any[] = []
@@ -29,9 +31,11 @@ export class FlashCardStepperComponent implements OnInit {
     private dialog: Dialog,
     private activedRoute: ActivatedRoute,
     private route: Router,
-    private flashCardService: FlashCardService
+    private flashCardService: FlashCardService,
+    private setService : SetsService
   ) {
     this.setId = this.activedRoute.snapshot.paramMap.get('setId');
+    this.setService.setBySetId(this.setId).subscribe(response => { this.setName = response.setName }); // name of the set by the id
     this.index = this.activedRoute.snapshot.paramMap.get('cardIndex');
   }
 

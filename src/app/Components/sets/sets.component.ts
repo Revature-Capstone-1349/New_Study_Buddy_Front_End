@@ -13,6 +13,10 @@ import { UserDataService } from 'src/app/Service/user-data.service';
 export class SetsComponent implements OnInit {
   currentUser : User
   currentSet: any[] = []
+  myBgColor: string = '#673ab7';
+  myFontColor: string = '#ffc107';  
+  defaultBgColor: string = '#ffc107';
+  defaultFontColor: string = '#673ab7';
   notifierSubscription: Subscription = this.setsSession.subjectNotifier.subscribe(notified => {
     this.setsSession.setsByUserIdAndPublic(this.currentUser.userId).subscribe({
       next: (res) =>{
@@ -29,10 +33,9 @@ export class SetsComponent implements OnInit {
     this.currentUser = this.session.getSession("userAccount")
     this.setsSession.setsByUserIdAndPublic(this.currentUser.userId).subscribe({
       next: (res) =>{
-        this.currentSet = res
+        this.currentSet = res;
       }
     })
   }
-
 
 }

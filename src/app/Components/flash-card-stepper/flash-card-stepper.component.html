@@ -1,11 +1,13 @@
 <div class="container">
+    
     <mat-card class="m-1">
+    <h1 title="Set Name">{{ setName | uppercase }}</h1> <!-- name of set in the flashcard -->
     <div class="d-flex flex-column">
         <button mat-mini-fab color="warn" class="align-self-end" (click)="closeClick()">
             <mat-icon>close</mat-icon>
         </button>
     </div>
-    <br />
+    <br /> 
     <mat-card-content>
         <br />
         <mat-card-title class="terms" class="text-center">{{ flashCardList[index].term }}</mat-card-title>
