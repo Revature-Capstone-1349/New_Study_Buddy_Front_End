@@ -22,3 +22,6 @@ mat-card:hover .del-flashcard-btn{
     opacity: 1;
 }
 
+button{
+    font-family: 'FuturaHeavy';
+}

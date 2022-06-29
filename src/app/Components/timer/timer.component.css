@@ -10,6 +10,7 @@ mat-card {
 .title {
   background-color: #673ab7;
   color: #ffd740;
+  font-family: 'FuturaHeavy';
 }
 
 .title:hover {
