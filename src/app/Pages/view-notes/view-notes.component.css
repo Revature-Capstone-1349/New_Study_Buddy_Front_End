@@ -31,8 +31,7 @@ mat-card:hover button{
     float: right;
     position: sticky;
     /* right:70% ; */
-    top:5%;
-    right: 5%
+    z-index: 1;
 
 }
 .search mat-list-option{
